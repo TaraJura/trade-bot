@@ -1,0 +1,22 @@
+{
+  "positions": {
+    "ETHUSDT": {
+      "quantity": 1.0,
+      "entry_price": 1.0,
+      "entry_time": "2025-06-06T20:46:55.294568",
+      "stop_loss": 0.98,
+      "take_profit": 1.03
+    }
+  },
+  "trades_history": [
+    {
+      "timestamp": "2025-06-06T20:46:55.294584",
+      "symbol": "ETHUSDT",
+      "action": "BUY",
+      "price": 1.0,
+      "quantity": 1.0,
+      "test_mode": true,
+      "profit": null
+    }
+  ]
+}

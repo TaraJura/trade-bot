@@ -89,6 +89,20 @@ class TradingBot:
         except Exception as e:
             logger.error(f"Error in trading cycle: {e}")
     
+    def create_position(self, symbol, quantity, entry_price):
+        """Manually create a position"""
+        self.positions[symbol] = {
+            'quantity': quantity,
+            'entry_price': entry_price,
+            'entry_time': datetime.now().isoformat(),
+            'stop_loss': entry_price * (1 - self.config['stop_loss_percentage']),
+            'take_profit': entry_price * (1 + self.config['take_profit_percentage'])
+        }
+        self.record_trade(symbol, 'BUY', entry_price, quantity, self.test_mode)
+        self.save_state()
+        logger.info(f"Manually created position: {quantity} {symbol} at ${entry_price:.2f}")
+        return True
+    
     def execute_trade(self, symbol, signal, price, confidence):
         if self.test_mode:
             logger.info(f"TEST MODE: Would execute {signal} order for {symbol} at ${price:.2f}")
